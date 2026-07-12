@@ -1,0 +1,53 @@
+{
+  "name": "bipl-lsp-client",
+  "displayName": "BIPL Language Server Client",
+  "description": "VS Code client for the BIPL language server (SLE assignment 3, option LSP.2)",
+  "version": "0.1.0",
+  "publisher": "vivekananda-reddy-godala",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": ["Programming Languages"],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "languages": [
+      {
+        "id": "bipl",
+        "aliases": ["BIPL"],
+        "extensions": [".bipl"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "bipl",
+        "scopeName": "source.bipl",
+        "path": "./syntaxes/bipl.tmLanguage.json"
+      }
+    ],
+    "configuration": {
+      "title": "BIPL",
+      "properties": {
+        "bipl.serverCommand": {
+          "type": "string",
+          "default": "bipl-lsp",
+          "description": "Command used to start the BIPL language server (absolute path or a command on PATH)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p ."
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.75.0",
+    "typescript": "^5.4.0"
+  }
+}
